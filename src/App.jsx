@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="flex mx-75 my-5">
         <Sidebar />
         <Dashboard />
       </div>
