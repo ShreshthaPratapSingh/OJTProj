@@ -1,6 +1,7 @@
 import React from 'react'
 import SummaryCards from './SummaryCards'
 import MonthSummary from './MonthSummary'
+import ChartIncomeVsExpense from './ChartIncomeVsExpense'
 import { Wallet, TrendingUp, TrendingDown, Receipt } from 'lucide-react'
 
 function Dashboard() {
@@ -20,6 +21,9 @@ function Dashboard() {
       </div>
       <div>
         <MonthSummary />
+      </div>
+      <div>
+        <ChartIncomeVsExpense />
       </div>
     </div>
   )
