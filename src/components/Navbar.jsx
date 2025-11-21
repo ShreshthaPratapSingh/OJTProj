@@ -6,7 +6,7 @@ import User from '../assets/User.png'
 
 function Navbar() {
   return (
-    <div className='relative z-10'>
+    <div className='z-10 fixed top-0 left-0'>
       <nav>
         <div className='w-screen bg-[#111727] text-white p-2 flex items-center justify-between border-b border-y-gray-700'>
           <img src={logo} alt="" className='w-32 h-auto'/>
