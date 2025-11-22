@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar'
 import Dashboard from './components/Dashboard'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Transactions from './components/Transactions'
+import Analytics from './components/Analytics'
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,14 @@ function App() {
       <div className="flex mx-75 my-5 w-full">
         <Sidebar />
         <Transactions />
+      </div></>
+    },
+    {
+      path: "/analytics",
+      element: <><Navbar />
+      <div className="flex mx-75 my-5 w-full">
+        <Sidebar />
+        <Analytics />
       </div></>
     }
   ])
