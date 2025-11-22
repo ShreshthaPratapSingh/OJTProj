@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Transactions from './components/Transactions'
 import Analytics from './components/Analytics'
+import TrialBalance from './components/TrialBalance'
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
         <Navbar />
         <div className="flex mx-75 my-5 w-full">
           <Sidebar />
-          <Analytics />
+          <TrialBalance />
         </div>
       </>
     },
