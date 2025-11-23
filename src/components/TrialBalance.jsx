@@ -5,7 +5,7 @@ import TrialBalanceTable from './TrialBalanceTable'
 
 function TrialBalance() {
     return (
-        <div className='mt-15 w-3/4'>
+        <div className='mt-15 w-3/4 flex flex-col gap-3'>
             <div className='flex justify-between'>
                 <div className="head text-white text-3xl">
                     Trial Balance
