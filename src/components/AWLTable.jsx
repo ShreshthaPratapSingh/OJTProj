@@ -1,6 +1,6 @@
 import React from "react";
 
-const LedgerTable = () => {
+const AWLTable = () => {
   const rows = [
     { date: "Nov 15, 2025", desc: "Monthly salary", account: "Salary", debit: "-", credit: "₹5,000.00", balance: "₹5,485.75" },
     { date: "Nov 14, 2025", desc: "Lunch at restaurant", account: "Food & Dining", debit: "₹45.50", credit: "-", balance: "₹485.75" },
@@ -74,4 +74,4 @@ const LedgerTable = () => {
   );
 };
 
-export default LedgerTable;
+export default AWLTable;
