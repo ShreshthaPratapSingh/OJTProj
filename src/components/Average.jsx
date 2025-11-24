@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Average({ Heading, Amount, Icon , iconColor, subhead, className = "" }) {
+function Average({ Heading, Amount, Icon, iconColor, subhead, className = "", amountColor = "white" }) {
     return (
         <div className={`bg-[#111727] border border-gray-600 p-5 text-white rounded-xl ${className}`}>
             <div className="h mb-5 flex justify-between">
@@ -9,8 +9,7 @@ function Average({ Heading, Amount, Icon , iconColor, subhead, className = "" })
                 </div>
                 {Icon && <Icon color={iconColor} />}
             </div>
-            <div className="value text-2xl">
-                {Amount}
+            <div className="value text-2xl" style={{ color: amountColor }}>                 {Amount}
             </div>
             <div className="subhead text-slate-500 text-xs">
                 {subhead}
