@@ -14,6 +14,7 @@ import ExpenseReport from './components/ExpenseReport'
 import RevenueReport from './components/RevenueReport'
 import AccountWiseLedger from './components/AccountWiseLedger'
 import CustomReport from './components/CustomReport'
+import Settings from './components/Settings'
 
 function App() {
   const router = createBrowserRouter([
@@ -118,6 +119,16 @@ function App() {
         <div className="flex mx-75 my-5 w-full">
           <Sidebar />
           <CustomReport />
+        </div>
+      </>
+    },
+    {
+      path: "/settings",
+      element: <>
+        <Navbar />
+        <div className="flex mx-75 my-5 w-full">
+          <Sidebar />
+          <Settings />
         </div>
       </>
     }
