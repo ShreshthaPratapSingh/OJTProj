@@ -17,12 +17,17 @@ import AccountWiseLedger from './components/AccountWiseLedger'
 import CustomReport from './components/CustomReport'
 import Settings from './components/Settings'
 import LandingPage from './components/LandingPage'
+import LoginPage from './components/LoginPage'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <LandingPage />
+    },
+    {
+      path: "/loginPage",
+      element: <LoginPage />
     },
     {
       path: "/dashboard",

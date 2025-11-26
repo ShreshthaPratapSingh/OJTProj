@@ -1,7 +1,8 @@
-import React from 'react'
+
 import bg from "../assets/LandingBG.png";
 import Logo from "../assets/logo.png"
 import { ArrowRight } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 function LandingPage() {
   return (
@@ -11,8 +12,8 @@ function LandingPage() {
         <div className="flex justify-between items-center">
           <img src={Logo} alt="" className="w-40 h-auto m-3" />
           <div className="flex gap-2 mx-2">
-            <button className='text-white bg-blue-500 px-2 py-1 rounded-xl text-xl font-semibold hover:cursor-pointer hover:scale-110 transition'>Log In</button>
-            <button className='bg-white px-2 py-1 rounded-xl text-xl font-semibold hover:cursor-pointer hover:scale-110 transition'>Sign up</button>
+            <NavLink to='/loginPage'><button className='text-white bg-blue-500 px-4 py-1 rounded-xl text-lg font-semibold hover:cursor-pointer hover:scale-110 transition'>Log In</button></NavLink>
+            <button className='bg-white px-4 py-1 rounded-xl text-lg font-semibold hover:cursor-pointer hover:scale-110 transition'>Sign up</button>
           </div>
         </div>
         <div className="flex justify-center h-full">
