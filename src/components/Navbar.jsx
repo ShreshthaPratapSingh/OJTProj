@@ -1,10 +1,14 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import Light_Dark_Mode from '../assets/Light-Dark-Mode.png'
-import noti from '../assets/noti.png'
 import User from '../assets/User.png'
 
 function Navbar() {
+
+  function logout(){
+    localStorage.removeItem("token")
+    window.location.href = '/'
+  }
   return (
     <div className='z-10 fixed top-0 left-0'>
       <nav>
@@ -13,8 +17,8 @@ function Navbar() {
           <div className='flex items-center gap-2'>
           <button className='bg-white text-black rounded-2xl px-2 hover:cursor-pointer h-7 transition-all duration-200 font-semibold hover:-translate-y-0.5 hover:shadow-[0px_10px_10px_black]'>+ Add Transactions</button>
           <button className='hover:cursor-pointer'><img src={Light_Dark_Mode} alt="" className='invert w-8 h-auto border border-gray-300 rounded-full p-1.5'/></button>
-          <button className='hover:cursor-pointer'><img src={noti} alt="" className='invert w-8 h-auto border border-gray-300 rounded-full p-1.5'/></button>
           <button className='hover:cursor-pointer'><img src={User} alt="" className='w-8 h-auto'/></button>
+          <button className='bg-red-500 text-white rounded px-2 hover:cursor-pointer h-7 transition-all duration-200 font-semibold hover:-translate-y-0.5 hover:shadow-[0px_10px_10px_black]' onClick={logout}>Logout</button>
           </div>
         </div>
       </nav>
