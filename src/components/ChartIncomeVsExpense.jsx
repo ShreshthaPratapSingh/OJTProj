@@ -2,25 +2,35 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 
-function ChartIncomeVsExpense() {
+function ChartIncomeVsExpense({ monthlyData }) {
     ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+
+    const sortedKeys = Object.keys(monthlyData).sort().reverse()
+
+    const lastSix = sortedKeys.slice(-6)
+    const labels = lastSix.map(key =>{
+        const [year, month] = key.split('-')
+        return `${monthNames[month-1]} ${year}`
+    })
+
+    const incomeValues = lastSix.map(ele => monthlyData[ele].income)
+    const expenseValues = lastSix.map(ele => monthlyData[ele].expense)
     const BarData = {
-        labels:[
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-        ],
+        labels: labels,
         datasets: [
             {
                 label: "Income",
-                data: [10000, 12000, 11000, 10000, 15000, 25000],
+                data: incomeValues,
                 backgroundColor: "#2e994a"
             },
             {
                 label: "Expenses",
-                data: [7800, 11300, 9980, 8500, 14400, 21500],
+                data: expenseValues,
                 backgroundColor: "red"
             }
         ]
@@ -31,7 +41,7 @@ function ChartIncomeVsExpense() {
             <div className="h text-white">
                 Income Vs Expense Trend(Last 6 months)
             </div>
-            <Bar options={option} data={BarData}/>
+            <Bar options={option} data={BarData} />
         </div>
     )
 }

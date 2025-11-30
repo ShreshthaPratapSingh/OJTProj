@@ -87,7 +87,7 @@ function Dashboard() {
 
       </div>
       <div>
-        <ChartIncomeVsExpense />
+        <ChartIncomeVsExpense monthlyData={ monthlyData } />
       </div>
     </div>
   )
