@@ -70,7 +70,7 @@ function AddTransactionModal({ close }) {
 
         if (response.ok) {
             console.log("Added successfully")
-            console.log(result)
+            close()
         }
         else {
             console.log("Failed")
@@ -115,8 +115,8 @@ function AddTransactionModal({ close }) {
                         onChange={handleChange}
                         className="border p-2 rounded bg-[#111727]"
                     >
-                        <option value="income">Credit (+)</option>
-                        <option value="expense">Debit (-)</option>
+                        <option value="Credit">Credit (+)</option>
+                        <option value="Debit">Debit (-)</option>
                     </select>
                     <select
                         name="category"

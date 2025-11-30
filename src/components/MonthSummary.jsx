@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MonthSummary() {
+function MonthSummary({ income, expenses, netBalance}) {
   return (
     <div className='bg-[#111727] px-5 py-5 rounded-2xl border border-gray-700 flex flex-col gap-5 w-full'>
       <div className="head text-white ">
@@ -12,7 +12,7 @@ function MonthSummary() {
             Income
           </div>
           <div className="value text-3xl text-[#3bbf5e]">
-            ₹6,000.0
+            {income}
           </div>
         </div>
         <div className="expenses">
@@ -20,7 +20,7 @@ function MonthSummary() {
             Expenses
           </div>
           <div className="value text-3xl text-[#f16374]">
-            ₹514.25
+            {expenses}
           </div>
         </div>
         <div className="net">
@@ -28,7 +28,7 @@ function MonthSummary() {
             Net Balance
           </div>
           <div className="value text-3xl text-[#3bbf5e]">
-            ₹5,485.75
+            {netBalance}
           </div> 
         </div>
       </div>
