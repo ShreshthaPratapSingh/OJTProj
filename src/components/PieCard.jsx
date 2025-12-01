@@ -21,7 +21,7 @@ function PieCard() {
     </div>
     <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
       <div className="h mb-10">
-        Income by Category
+        Expense by Category
       </div>
       <div className="chartCont">
         <PieChart labels={["Food and dining", "Transportation", "Shopping", "Bills and utilities", "Entertainment", "Healthcare"]} rawdata={[74.26, 60, 120, 150, 35, 75]} colors={["#2e994a", "blue", "purple", "yellow", "red", "pink"]}/>

@@ -17,32 +17,25 @@ function LoginPage() {
     async function handleLogin(e) {
         e.preventDefault();
 
-        const data = {
-            username: username,
-            password: password
-        }
-
         const response = await fetch("http://127.0.0.1:8000/api/token/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        })
+            body: JSON.stringify({ username, password }),
+        });
+
+        const result = await response.json();
+
         if (response.ok) {
-            console.log("login successful")
-            navigate('/dashboard')
+            localStorage.setItem("access", result.access);
+            localStorage.setItem("refresh", result.refresh);
+
+            console.log("Login successful");
+            navigate('/dashboard');
+        } else {
+            setError(JSON.stringify(result));
         }
-        else {
-            const data = await response.json();
-            setError(JSON.stringify(data));
-        }
-
-        const result = await response.json()
-
-        localStorage.setItem("access", result.access)
-        localStorage.setItem("refresh", result.refresh)
-
-        console.log("Logged in!", result);
     }
+
 
 
     return (

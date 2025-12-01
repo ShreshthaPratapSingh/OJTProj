@@ -2,13 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Average from './Average'
 import { TrendingUp, TrendingDown, ChartColumn } from 'lucide-react'
-import fetchUserData from '../utils/datafetch'
 import PieCard from './PieCard'
+import fetchUserData from '../utils/datafetch'
 import ChartIncomeVsExpense from './ChartIncomeVsExpense'
 
 function Analytics() {
 
     const [monthlyData, setMonthlyData] = useState({})
+    const [avgIncome, setAvgIncome] = useState(0)
+    const [avgExpense, setAvgExpense] = useState(0)
 
     function groupTransactionsByMonth(transactions) {
         const monthlySummary = {}
@@ -52,6 +54,27 @@ function Analytics() {
             console.log("Monthly Data:", response);
         }
     }, [data]);
+
+    useEffect(() => {
+        if (!monthlyData || Object.keys(monthlyData).length === 0) return;
+
+        const sortedMonths = Object.keys(monthlyData)
+            .sort((a, b) => new Date(b) - new Date(a))
+            .slice(0, 6);
+
+        const incomes = sortedMonths.map(key => monthlyData[key].income);
+        const expenses = sortedMonths.map(key => monthlyData[key].expense);
+
+        const avgInc = incomes.reduce((a, b) => a + b, 0) / incomes.length;
+        const avgExp = expenses.reduce((a, b) => a + b, 0) / expenses.length;
+
+        setAvgIncome(avgInc);
+        setAvgExpense(avgExp);
+
+        console.log("Avg Income:", avgInc);
+        console.log("Avg Expense:", avgExp);
+    }, [monthlyData]);
+
     return (
         <div className='mt-15 w-full'>
             <div className="head text-white text-3xl">
@@ -61,9 +84,9 @@ function Analytics() {
                 </div>
             </div>
             <div className="avgCont mt-5 flex gap-3 w-3/4">
-                <Average Icon={TrendingUp} iconColor={'green'} Amount={'₹1833.33'} Heading={'Average Icome'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
-                <Average Icon={TrendingDown} iconColor={'red'} Amount={'₹127.38'} Heading={'Average Expense'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
-                <Average Icon={ChartColumn} iconColor={'blue'} Amount={'93.1%'} Heading={'Savings Rate'} subhead={'Of total income'} className={"w-1/3"} />
+                <Average Icon={TrendingUp} iconColor={'green'} Amount={`₹${avgIncome}`} Heading={'Average Icome'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
+                <Average Icon={TrendingDown} iconColor={'red'} Amount={`₹${avgExpense}`} Heading={'Average Expense'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
+                <Average Icon={ChartColumn} iconColor={'blue'} Amount={`${((avgExpense/avgIncome)*100).toFixed(2)}%`} Heading={'Savings Rate'} subhead={'Of total income'} className={"w-1/3"} />
             </div>
             <div className="chart w-3/4">
                 < ChartIncomeVsExpense monthlyData={monthlyData} />

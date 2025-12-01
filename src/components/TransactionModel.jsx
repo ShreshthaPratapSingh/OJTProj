@@ -128,6 +128,7 @@ function AddTransactionModal({ close }) {
                         <option value="Food and dining">Food and dining</option>
                         <option value="Transportation">Transportation</option>
                         <option value="Freelance">Freelance</option>
+                        <option value="Bills and utilities">Bills and utilities</option>
                         <option value="Shopping">Shopping</option>
                         <option value="Entertainment">Entertainment</option>
                         <option value="Investment">Investment</option>
