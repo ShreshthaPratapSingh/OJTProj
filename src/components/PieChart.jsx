@@ -18,7 +18,7 @@ function PieChart({ labels, rawdata, colors }) {
                 label: "Income Breakdown",
                 data: percentData,
                 backgroundColor: colors,
-                borderWidth: 1
+                borderWidth: 0
             }
         ]
     }

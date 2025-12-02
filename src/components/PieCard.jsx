@@ -1,32 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PieChart from './PieChart'
+import fetchUserData from '../utils/datafetch'
+import { getCategoryData } from '../utils/getCategoryData'
 
 function PieCard() {
+  const [data, setData] = useState([])
+  const [incomeData, setIncomeData] = useState({ labels: [], rawdata: [] })
+  const [expenseData, setExpenseData] = useState({ labels: [], rawdata: [] })
+
+  const palette = [
+    "#4e79a7", "#f28e2b", "#e15759", "#76b7b2", "#59a14f",
+    "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ab",
+    "#2b908f", "#90ee7e", "#f45b5b", "#7798bf", "#aaeeee",
+    "#ff0066", "#eeaaee", "#55bf3b", "#df5353", "#7798BF"
+  ];
+
+  const getColors = (count) => {
+    return palette.slice(0, count);
+  };
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetchUserData()
+      setData(response)
+    }
+    getData()
+  }, [])
+  useEffect(() => {
+    if (data.length > 0) {
+      setIncomeData(getCategoryData(data, "credit"))
+      setExpenseData(getCategoryData(data, "debit"))
+    }
+  }, [data])
+  console.log(incomeData, expenseData)
   return (
     <div className='flex gap-2'>
-    <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
-      <div className="h mb-10">
-        Income by Category
+      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
+        <div className="h mb-10">
+          Income by Category
+        </div>
+        <div className="chartCont">
+          <PieChart
+            labels={incomeData.labels}
+            rawdata={incomeData.rawdata}
+            colors={getColors(incomeData.labels.length)} />
+        </div>
       </div>
-      <div className="chartCont">
-        <PieChart
-        labels={[
-            "Freelance",
-            "Investment",
-            "Salary"
-        ]}
-        rawdata={[800, 1200, 30000]}
-        colors={["blue", "purple", "#2e994a"]} />
+      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
+        <div className="h mb-10">
+          Expense by Category
+        </div>
+        <div className="chartCont">
+          <PieChart labels={expenseData.labels} rawdata={expenseData.rawdata} colors={getColors(expenseData.labels.length)} />
+        </div>
       </div>
-    </div>
-    <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
-      <div className="h mb-10">
-        Expense by Category
-      </div>
-      <div className="chartCont">
-        <PieChart labels={["Food and dining", "Transportation", "Shopping", "Bills and utilities", "Entertainment", "Healthcare"]} rawdata={[74.26, 60, 120, 150, 35, 75]} colors={["#2e994a", "blue", "purple", "yellow", "red", "pink"]}/>
-      </div>
-    </div>
     </div>
   )
 }

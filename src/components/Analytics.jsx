@@ -51,7 +51,6 @@ function Analytics() {
         if (data.length > 0) {
             const response = groupTransactionsByMonth(data);
             setMonthlyData(response);
-            console.log("Monthly Data:", response);
         }
     }, [data]);
 
@@ -70,9 +69,6 @@ function Analytics() {
 
         setAvgIncome(avgInc);
         setAvgExpense(avgExp);
-
-        console.log("Avg Income:", avgInc);
-        console.log("Avg Expense:", avgExp);
     }, [monthlyData]);
 
     return (
