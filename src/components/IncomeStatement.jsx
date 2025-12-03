@@ -37,10 +37,10 @@ function IncomeStatement() {
             <div className="Cont flex gap-2">
                 <Average Heading={"Total Revenue"} Amount={`₹${totalIncome}`} Icon={TrendingUp} iconColor={"green"} subhead={"Income earned"} className={"w-1/3"} />
                 <Average Heading={"Total Expenses"} Amount={`₹${totalExpense}`} Icon={TrendingDown} iconColor={"red"} subhead={"Money Spent"} className={"w-1/3"} />
-                <Average2 Heading={"Net Profit/Loss"} Amount={`₹${totalBalance}`} Icon={DollarSign} iconColor={isNegative?"red":"green"} subhead={"Margin: 91.4%"} className={"w-1/3"} isNegative={isNegative}/>
+                <Average2 Heading={"Net Profit/Loss"} Amount={`₹${totalBalance}`} Icon={DollarSign} iconColor={isNegative?"red":"green"} subhead={`Margin: ${totalBalance>=0?((totalBalance/totalIncome)*100).toFixed(2):((totalBalance/totalExpense)*100).toFixed(2)}%`} className={"w-1/3"} isNegative={isNegative}/>
             </div>
             <div className="w-full">
-                <IncomeStatementTable />
+                <IncomeStatementTable totalIncome={totalIncome} totalExpense={totalExpense} />
             </div>
 
         </div>
