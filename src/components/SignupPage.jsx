@@ -17,7 +17,7 @@ function SignupPage() {
     async function handleSignUp() {
         setError("")
 
-        const response = await fetch("http://127.0.0.1:8000/api/authentication/register/", {
+        const response = await fetch("https://novaaccounts.pythonanywhere.com/api/authentication/register/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

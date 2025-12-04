@@ -6,7 +6,7 @@ async function refreshAccessToken() {
 
     if (!refresh) return null;
 
-    const response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
+    const response = await fetch("https://novaaccounts.pythonanywhere.com/api/token/refresh/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh }),
@@ -47,7 +47,7 @@ async function fetchWithAuth(url, options = {}) {
 }
 
 async function fetchUserData() {
-    const response = await fetchWithAuth('http://127.0.0.1:8000/api/transactions/')
+    const response = await fetchWithAuth('https://novaaccounts.pythonanywhere.com/api/transactions/')
     if (!response.ok) {
         console.log("Failed to fetch")
         return []
@@ -58,18 +58,18 @@ async function fetchUserData() {
 
 export async function deleteTransaction(id) {
     const response = await fetchWithAuth(
-        `http://127.0.0.1:8000/api/transactions/${id}/`,
+        `https://novaaccounts.pythonanywhere.com/api/transactions/${id}/`,
         {
             method: "DELETE"
         }
     );
 
-    return response; // caller checks response.ok
+    return response; 
 }
 
 export async function updateTransaction(id, updatedData) {
     const response = await fetchWithAuth(
-        `http://127.0.0.1:8000/api/transactions/${id}/`,
+        `https://novaaccounts.pythonanywhere.com/api/transactions/${id}/`,
         {
             method: "PATCH",
             body: JSON.stringify(updatedData)
