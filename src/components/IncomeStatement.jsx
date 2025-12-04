@@ -1,5 +1,4 @@
 import React from 'react'
-import FilterBox from './FilterBox'
 import Average from './Average'
 import { useState, useEffect } from 'react'
 import fetchUserData from '../utils/datafetch'
@@ -30,9 +29,6 @@ function IncomeStatement() {
                 <div className="subhead text-slate-500 text-xs">
                     Revenue, Expenses and profit analysis
                 </div>
-            </div>
-            <div className="search w-full">
-                <FilterBox />
             </div>
             <div className="Cont flex gap-2">
                 <Average Heading={"Total Revenue"} Amount={`₹${totalIncome}`} Icon={TrendingUp} iconColor={"green"} subhead={"Income earned"} className={"w-1/3"} />
