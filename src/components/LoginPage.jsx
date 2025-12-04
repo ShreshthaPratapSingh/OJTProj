@@ -20,6 +20,7 @@ function LoginPage() {
         const response = await fetch("https://novaaccounts.pythonanywhere.com/api/token/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ username, password }),
         });
 
