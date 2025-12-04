@@ -1,5 +1,5 @@
 import React from 'react'
-import PersonalSettings from './personalSettings'
+import PersonalSettings from './PersonalSettings'
 import NotificationSettings from './Notifications'
 import DataManagement from './DataManagement'
 
