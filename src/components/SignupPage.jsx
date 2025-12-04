@@ -1,67 +1,122 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import bg from "../assets/LandingBG.png";
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logo.png";
 import { BriefcaseBusiness } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function SignupPage() {
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-    const [error, setError] = useState("")
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     async function handleSignUp() {
-        setError("")
+        setError("");
 
-        const response = await fetch("https://novaaccounts.pythonanywhere.com/api/authentication/register/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username,
-                email,
-                password
-            })
-        })
-        if (response.ok) {
-            console.log("login successful")
-            navigate('/dashboard')
-        }
-        else {
-            const data = await response.json();
+        localStorage.clear();
+
+        const signupResponse = await fetch(
+            "https://novaaccounts.pythonanywhere.com/api/authentication/register/",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password })
+            }
+        );
+
+        if (!signupResponse.ok) {
+            const data = await signupResponse.json();
             setError(JSON.stringify(data));
+            return;
         }
+
+        console.log("Signup successful");
+
+        const loginResponse = await fetch(
+            "https://novaaccounts.pythonanywhere.com/api/token/",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            }
+        );
+
+        if (!loginResponse.ok) {
+            setError("Signup OK but auto-login failed.");
+            return;
+        }
+
+        const tokens = await loginResponse.json();
+
+        localStorage.setItem("access", tokens.access);
+        localStorage.setItem("refresh", tokens.refresh);
+
+        console.log("Auto-login successful");
+
+        navigate("/dashboard");
     }
+
     return (
         <div className="relative w-full h-screen bg-cover bg-no-repeat overflow-y-hidden" style={{ backgroundImage: `url(${bg})` }}>
             <div className="absolute inset-0 bg-black/70"></div>
             <img src={Logo} alt="" className="w-40 h-auto m-3 relative z-10" />
+
             <div className="relative z-10 w-full h-auto flex justify-center mt-40">
                 <div className="text-white bg-[#1e2844]/30 w-2xl h-auto p-3 rounded-xl border-2 border-gray-500 font-semibold text-3xl flex flex-col gap-3 backdrop-blur-lg">
+
                     <div className="flex gap-2 items-end justify-center">
                         Get your ledger now! <BriefcaseBusiness size={30} />
                     </div>
+
                     <div className="input flex flex-col gap-4 mt-10 items-center">
-                        <input type="text" placeholder='Enter username' className='text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4' value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <input type="email" placeholder='Enter email' className='text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4' value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" placeholder='Enter password' className='text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Enter username"
+                            className="text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+
+                        <input
+                            type="email"
+                            placeholder="Enter email"
+                            className="text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Enter password"
+                            className="text-white text-lg border border-gray-500 rounded-full px-4 py-1 placeholder:font-light font-light w-3/4"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
+
                     {error && <p className="text-red-400 text-center text-base">{error}</p>}
+
                     <div className="buttons flex flex-col items-center text-xl gap-2">
-                        <button onClick={handleSignUp} className='bg-blue-500 rounded-full w-1/3 border-2 border-blue-300 py-1 hover:cursor-pointer hover:shadow-[0px_0px_5px_white] transition text-center'>Signup</button>
-                        <NavLink to='/loginPage'>
-                            <span className='text-white text-xs font-light hover:cursor-pointer'>Already have an account? Login here</span>
+                        <button
+                            onClick={handleSignUp}
+                            className="bg-blue-500 rounded-full w-1/3 border-2 border-blue-300 py-1 hover:cursor-pointer hover:shadow-[0px_0px_5px_white] transition text-center"
+                        >
+                            Signup
+                        </button>
+
+                        <NavLink to="/loginPage">
+                            <span className="text-white text-xs font-light hover:cursor-pointer">
+                                Already have an account? Login here
+                            </span>
                         </NavLink>
                     </div>
+
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default SignupPage
+export default SignupPage;
