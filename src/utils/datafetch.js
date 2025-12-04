@@ -48,12 +48,40 @@ async function fetchWithAuth(url, options = {}) {
 
 async function fetchUserData() {
     const response = await fetchWithAuth('http://127.0.0.1:8000/api/transactions/')
-    if (!response.ok){
+    if (!response.ok) {
         console.log("Failed to fetch")
         return []
     }
     const data = await response.json()
     return data
 }
+
+export async function deleteTransaction(id) {
+    const response = await fetchWithAuth(
+        `http://127.0.0.1:8000/api/transactions/${id}/`,
+        {
+            method: "DELETE"
+        }
+    );
+
+    return response; // caller checks response.ok
+}
+
+export async function updateTransaction(id, updatedData) {
+    const response = await fetchWithAuth(
+        `http://127.0.0.1:8000/api/transactions/${id}/`,
+        {
+            method: "PATCH",
+            body: JSON.stringify(updatedData)
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to update transaction");
+    }
+
+    return await response.json();
+}
+
 
 export default fetchUserData
