@@ -62,7 +62,7 @@ function AddTransactionModal({ close }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetchWithAuth("http://127.0.0.1:8000/api/transactions/add/", {
+        const response = await fetchWithAuth("https://novaaccounts.pythonanywhere.com/api/transactions/add/", {
             method: "POST",
             body: JSON.stringify(details),
         });
