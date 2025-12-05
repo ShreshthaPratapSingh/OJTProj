@@ -80,7 +80,7 @@ function Transactions() {
     }
 
     return (
-        <div className="mt-15 flex flex-col w-3/4">
+        <div className="flex flex-col w-full">
             <div className="head text-white text-3xl">
                 <span>Transactions</span>
                 <div className="subhead text-slate-500 text-xs">

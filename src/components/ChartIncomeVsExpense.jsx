@@ -13,9 +13,9 @@ function ChartIncomeVsExpense({ monthlyData }) {
     const sortedKeys = Object.keys(monthlyData).sort().reverse()
 
     const lastSix = sortedKeys.slice(-6)
-    const labels = lastSix.map(key =>{
+    const labels = lastSix.map(key => {
         const [year, month] = key.split('-')
-        return `${monthNames[month-1]} ${year}`
+        return `${monthNames[month - 1]} ${year}`
     })
 
     const incomeValues = lastSix.map(ele => monthlyData[ele].income)
@@ -35,13 +35,18 @@ function ChartIncomeVsExpense({ monthlyData }) {
             }
         ]
     }
-    const option = {}
+    const option = {
+        responsive: true,
+        maintainAspectRatio: false,
+    }
     return (
         <div className="bg-[#111727] px-5 py-5 rounded-2xl border border-gray-700 gap-5 w-full my-10">
-            <div className="h text-white">
+            <div className="h text-white mb-4">
                 Income Vs Expense Trend(Last 6 months)
             </div>
-            <Bar options={option} data={BarData} />
+            <div className="h-64 sm:h-80 md:h-96">
+                <Bar options={option} data={BarData} />
+            </div>
         </div>
     )
 }

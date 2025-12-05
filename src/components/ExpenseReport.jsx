@@ -40,7 +40,7 @@ function ExpenseReport() {
   }
 
   return (
-    <div className='mt-15 w-3/4 flex flex-col gap-3'>
+    <div className='flex flex-col gap-3 w-full'>
       <div className="head text-white text-3xl">
         Expense Report
         <div className="subhead text-slate-500 text-xs">

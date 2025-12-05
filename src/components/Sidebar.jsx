@@ -8,10 +8,10 @@ import setting from '../assets/settings.png'
 import { NavLink } from 'react-router-dom'
 import { ChevronDown, ChevronRight, Scale, DollarSign, Wallet, TrendingUp, TrendingDown, PieChart, BookOpen, Calendar } from 'lucide-react'
 
-function Sidebar() {
+function Sidebar({ isOpen, close }) {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
   return (
-    <div className='fixed top-0 left-0 h-screen w-60 bg-[#111727] mt-15 border-r border-gray-700'>
+    <div className={`fixed top-0 left-0 h-screen w-60 bg-[#111727] pt-20 border-r border-gray-700 z-40 transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
       <ul className="flex flex-col text-white p-5 text-xl gap-2 [&_li]:hover:bg-gray-700 [&_li]:p-2 [&_li]:rounded-2xl [&_li]:hover:cursor-pointer">
         <NavLink to="/dashboard" className={(e) => e.isActive ? "active" : ""}><li className='flex items-center gap-2'><img src={dashboard} alt="" className='invert w-4 h-4' /><span>Dashboard</span></li></NavLink>
         <NavLink to="/transactions" className={(e) => e.isActive ? "active" : ""}><li className='flex items-center gap-2'><img src={transaction} alt="" className='invert w-4 h-4' /><span>Transactions</span></li></NavLink>

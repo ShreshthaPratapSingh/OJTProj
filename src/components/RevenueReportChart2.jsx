@@ -31,10 +31,9 @@ export default function RevenueByCategory({ categoryBreakdown }) {
         data: values,
         backgroundColor: "#22c55e",
         borderRadius: 10,
-        barPercentage: 1.0,
-        categoryPercentage: 0.75,
-        barThickness: 270,
-        maxBarThickness: 300,
+        barPercentage: 0.8,
+        categoryPercentage: 0.8,
+        maxBarThickness: 50,
       },
     ],
   };

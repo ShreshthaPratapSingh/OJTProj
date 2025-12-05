@@ -44,7 +44,7 @@ function RevenueReport() {
     async function loadData() {
       const response = await fetchUserData();
       setAllData(response);
-      setFilteredData(response); 
+      setFilteredData(response);
     }
     loadData();
   }, []);
@@ -113,7 +113,7 @@ function RevenueReport() {
   }, [monthlyData, filteredData]);
 
   return (
-    <div className='mt-15 flex flex-col gap-3 w-3/4'>
+    <div className='flex flex-col gap-3 w-full'>
       <div className="head text-white text-3xl">
         Revenue Report
         <div className="subhead text-slate-500 text-xs">
@@ -123,10 +123,10 @@ function RevenueReport() {
 
       <FilterBox onFilter={handleFilter} />
 
-      <div className="flex gap-2">
-        <Average Heading="Total Revenue" Amount={`₹${totalIncome}`} subhead="Selected Period" className="w-1/3" />
-        <Average Heading="Average Monthly" Amount={`₹${avgIncome}`} subhead="Avg of Selected Months" className="w-1/3" />
-        <Average Heading="Income Sources" Amount={`${incomeSources}`} subhead="Categories" className="w-1/3" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+        <Average Heading="Total Revenue" Amount={`₹${totalIncome}`} subhead="Selected Period" className="w-full" />
+        <Average Heading="Average Monthly" Amount={`₹${avgIncome}`} subhead="Avg of Selected Months" className="w-full" />
+        <Average Heading="Income Sources" Amount={`${incomeSources}`} subhead="Categories" className="w-full" />
       </div>
 
       <RevenueReportChart1 monthlyData={monthlyData} />

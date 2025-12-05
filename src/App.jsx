@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import './index.css'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import Layout from './components/Layout'
 import Dashboard from './components/Dashboard'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Transactions from './components/Transactions'
@@ -31,67 +30,31 @@ function App() {
     },
     {
       path: "/dashboard",
-      element: <><Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <Dashboard />
-        </div></>
+      element: <Layout><Dashboard /></Layout>
     },
     {
       path: "/transactions",
-      element: <><Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <Transactions />
-        </div></>
+      element: <Layout><Transactions /></Layout>
     },
     {
       path: "/analytics",
-      element: <><Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <Analytics />
-        </div></>
+      element: <Layout><Analytics /></Layout>
     },
     {
       path: "/reports/incomeStatement",
-      element: <>
-        <Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <IncomeStatement />
-        </div>
-      </>
+      element: <Layout><IncomeStatement /></Layout>
     },
     {
       path: "/reports/Expense",
-      element: <>
-        <Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <ExpenseReport />
-        </div>
-      </>
+      element: <Layout><ExpenseReport /></Layout>
     },
     {
       path: "/reports/revenue",
-      element: <>
-        <Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <RevenueReport />
-        </div>
-      </>
+      element: <Layout><RevenueReport /></Layout>
     },
     {
       path: "/settings",
-      element: <>
-        <Navbar />
-        <div className="flex mx-70 my-5 w-full">
-          <Sidebar />
-          <Settings />
-        </div>
-      </>
+      element: <Layout><Settings /></Layout>
     },
   ])
   return (

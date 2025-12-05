@@ -63,14 +63,14 @@ function Dashboard() {
 
   const totalBalance = totalIncome - totalExpense
   return (
-    <div className='mt-15'>
+    <div className=''>
       <div className="head text-white text-3xl">
         Dashboard
         <div className="subhead text-slate-500 text-xs">
           Welcome back! Here's your financial overview
         </div>
       </div>
-      <div className="CardsContainer my-8 flex gap-2 w-full">
+      <div className="CardsContainer my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
         <SummaryCards Icon={Wallet} IconColor={"#264e9a"} title={"Total Balance"} amount={`₹${totalBalance}`} amountColor={"#3bbf5e"} IconBGColor={"#15205a"} />
         <SummaryCards Icon={TrendingUp} IconColor={"#167939"} title={"Total Income"} amount={`₹${totalIncome}`} amountColor={"#3bbf5e"} IconBGColor={"#0f2719"} />
         <SummaryCards Icon={TrendingDown} IconColor={"#a7252e"} title={"Total Expenses"} amount={`₹${totalExpense}`} amountColor={"#f16374"} IconBGColor={"#420a0a"} />
@@ -87,7 +87,7 @@ function Dashboard() {
 
       </div>
       <div>
-        <ChartIncomeVsExpense monthlyData={ monthlyData } />
+        <ChartIncomeVsExpense monthlyData={monthlyData} />
       </div>
     </div>
   )

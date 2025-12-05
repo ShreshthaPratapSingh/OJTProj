@@ -72,22 +72,22 @@ function Analytics() {
     }, [monthlyData]);
 
     return (
-        <div className='mt-15 w-full'>
+        <div className='w-full'>
             <div className="head text-white text-3xl">
                 Analytics
                 <div className="subhead text-slate-500 text-xs">
                     Detailed insights into your financial patters
                 </div>
             </div>
-            <div className="avgCont mt-5 flex gap-3 w-3/4">
-                <Average Icon={TrendingUp} iconColor={'green'} Amount={`₹${avgIncome}`} Heading={'Average Icome'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
-                <Average Icon={TrendingDown} iconColor={'red'} Amount={`₹${avgExpense}`} Heading={'Average Expense'} subhead={'Per month(last 6 months)'} className={"w-1/3"} />
-                <Average Icon={ChartColumn} iconColor={'blue'} Amount={`${(100-(avgExpense/avgIncome)*100).toFixed(2)}%`} Heading={'Savings Rate'} subhead={'Of total income'} className={"w-1/3"} />
+            <div className="avgCont mt-5 grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
+                <Average Icon={TrendingUp} iconColor={'green'} Amount={`₹${avgIncome}`} Heading={'Average Icome'} subhead={'Per month(last 6 months)'} className={"w-full"} />
+                <Average Icon={TrendingDown} iconColor={'red'} Amount={`₹${avgExpense}`} Heading={'Average Expense'} subhead={'Per month(last 6 months)'} className={"w-full"} />
+                <Average Icon={ChartColumn} iconColor={'blue'} Amount={`${(100 - (avgExpense / avgIncome) * 100).toFixed(2)}%`} Heading={'Savings Rate'} subhead={'Of total income'} className={"w-full"} />
             </div>
-            <div className="chart w-3/4">
+            <div className="chart w-full mt-4">
                 < ChartIncomeVsExpense monthlyData={monthlyData} />
             </div>
-            <div className="piecard">
+            <div className="piecard mt-4">
                 <PieCard />
             </div>
         </div>

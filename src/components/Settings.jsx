@@ -5,7 +5,7 @@ import DataManagement from './DataManagement'
 
 function Settings() {
     return (
-        <div className='mt-15 flex flex-col gap-3 w-3/4'>
+        <div className='flex flex-col gap-3 w-full'>
             <div className="head text-white text-3xl">
                 Settings
                 <div className="subhead text-slate-500 text-xs">

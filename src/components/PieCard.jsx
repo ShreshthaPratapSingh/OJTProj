@@ -16,7 +16,7 @@ function PieCard() {
   ];
 
   const getColors = (count, offset = 0) => {
-    return palette.slice(offset, offset+count);
+    return palette.slice(offset, offset + count);
   };
 
   useEffect(() => {
@@ -34,8 +34,8 @@ function PieCard() {
   }, [data])
   console.log(incomeData, expenseData)
   return (
-    <div className='flex gap-2'>
-      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
+    <div className='flex flex-col md:flex-row gap-4 w-full'>
+      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-full md:w-1/2'>
         <div className="h mb-10">
           Income by Category
         </div>
@@ -46,7 +46,7 @@ function PieCard() {
             colors={getColors(incomeData.labels.length, 0)} />
         </div>
       </div>
-      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-3/8'>
+      <div className='bg-black border border-gray-600 p-5 text-white rounded-xl w-full md:w-1/2'>
         <div className="h mb-10">
           Expense by Category
         </div>
