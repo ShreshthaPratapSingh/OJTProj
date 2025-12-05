@@ -12,8 +12,6 @@ function Settings() {
                     Manage your account settings and preferences
                 </div>
             </div>
-            <PersonalSettings />
-            <NotificationSettings />
             <DataManagement />
         </div>
     )
