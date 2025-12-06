@@ -55,7 +55,7 @@ const ReportFilters = () => {
             <div className="mt-6">
                 <label className="text-gray-400 text-sm block mb-2">Show Columns</label>
 
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-y-3 text-sm">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3 text-sm">
                     {["Date", "Description", "Category", "Type", "Amount", "Account"].map(
                         (item) => (
                             <label key={item} className="flex items-center gap-2 text-gray-300">

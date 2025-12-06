@@ -35,24 +35,24 @@ function FilterBox({ onFilter }) {
                     <Calendar size={15} /> Date range
                 </div>
 
-                <div className="flex gap-3 text-sm">
-                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer"
+                <div className="flex gap-3 text-sm flex-wrap">
+                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer self-start"
                         onClick={() => applyPreset(0)}>Today</div>
 
-                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer"
+                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer self-start"
                         onClick={() => applyPreset(7)}>Last 7 days</div>
 
-                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer"
+                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer self-start"
                         onClick={() => applyPreset(30)}>Last Month</div>
 
-                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer"
+                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer self-start"
                         onClick={() => applyPreset(90)}>Last Quarter</div>
 
-                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer"
+                    <div className="px-3 py-1 border border-gray-500 rounded cursor-pointer self-start"
                         onClick={() => applyPreset(365)}>Last Year</div>
                 </div>
 
-                <div className='flex justify-between'>
+                <div className='flex flex-col md:flex-row justify-between gap-4'>
                     <div className="text-gray-400 text-sm">
                         Start Date <br />
                         <input

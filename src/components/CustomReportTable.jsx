@@ -22,7 +22,7 @@ const CustomReportTable = () => {
         <p className="text-gray-400 text-sm">10 transactions found</p>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-gray-700">
+      <div className="overflow-hidden rounded-xl border border-gray-700 overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="bg-[#111827] text-gray-300 border-b border-gray-700">
             <tr>
@@ -56,9 +56,8 @@ const CustomReportTable = () => {
                 </td>
 
                 <td
-                  className={`py-3 px-4 font-medium ${
-                    r.type === "income" ? "text-green-400" : "text-red-400"
-                  }`}
+                  className={`py-3 px-4 font-medium ${r.type === "income" ? "text-green-400" : "text-red-400"
+                    }`}
                 >
                   {r.amount}
                 </td>

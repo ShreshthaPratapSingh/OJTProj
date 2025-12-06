@@ -5,13 +5,13 @@ function SearchBox({ filters, setFilters, applyFilters }) {
         <div className="bg-[#0a0a0a] px-3 py-3 rounded border border-gray-700 flex w-full mt-5 flex-col">
             <div className="h text-white mb-3">Filters</div>
 
-            <div className="searchCont flex gap-3 justify-between mb-3">
+            <div className="searchCont grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
 
                 <div className="Search flex flex-col">
                     <div className="S text-white mb-1">Search</div>
                     <input
                         type="text"
-                        className="bg-[#1e1e1e] rounded border border-gray-600 placeholder:text-gray-600 px-2 text-white"
+                        className="bg-[#1e1e1e] rounded border border-gray-600 placeholder:text-gray-600 px-2 text-white h-[30px]"
                         placeholder="Search description..."
                         value={filters.search}
                         onChange={(e) =>
@@ -24,7 +24,7 @@ function SearchBox({ filters, setFilters, applyFilters }) {
                     <div className="S text-white mb-1">Start Date</div>
                     <input
                         type="date"
-                        className="bg-[#1e1e1e] rounded border border-gray-600 text-white px-2"
+                        className="bg-[#1e1e1e] rounded border border-gray-600 text-white px-2 h-[30px]"
                         value={filters.startDate}
                         onChange={(e) =>
                             setFilters(prev => ({ ...prev, startDate: e.target.value }))
@@ -36,7 +36,7 @@ function SearchBox({ filters, setFilters, applyFilters }) {
                     <div className="S text-white mb-1">End Date</div>
                     <input
                         type="date"
-                        className="bg-[#1e1e1e] rounded border border-gray-600 text-white px-2"
+                        className="bg-[#1e1e1e] rounded border border-gray-600 text-white px-2 h-[30px]"
                         value={filters.endDate}
                         onChange={(e) =>
                             setFilters(prev => ({ ...prev, endDate: e.target.value }))
@@ -47,7 +47,7 @@ function SearchBox({ filters, setFilters, applyFilters }) {
                 <div className="Type flex flex-col">
                     <div className="S text-white mb-1">Type</div>
                     <select
-                        className="bg-[#1e1e1e] text-white rounded border border-gray-600 px-1"
+                        className="bg-[#1e1e1e] text-white rounded border border-gray-600 px-1 h-[30px]"
                         value={filters.type}
                         onChange={(e) =>
                             setFilters(prev => ({ ...prev, type: e.target.value }))
@@ -62,7 +62,7 @@ function SearchBox({ filters, setFilters, applyFilters }) {
                 <div className="Category flex flex-col">
                     <div className="S text-white mb-1">Category</div>
                     <select
-                        className="bg-[#1e1e1e] text-white rounded border border-gray-600 px-1"
+                        className="bg-[#1e1e1e] text-white rounded border border-gray-600 px-1 h-[30px]"
                         value={filters.category}
                         onChange={(e) =>
                             setFilters(prev => ({ ...prev, category: e.target.value }))

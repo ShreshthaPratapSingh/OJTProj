@@ -99,7 +99,7 @@ function Transactions() {
                     Showing {filteredData.length} of {data.length} transactions
                 </div>
 
-                <div className="table text-white w-full mt-3">
+                <div className="table text-white w-full mt-3 overflow-x-auto">
                     <table className="w-full text-sm text-left text-gray-300">
                         <thead className="text-xs uppercase bg-[#111827] text-gray-400">
                             <tr>
